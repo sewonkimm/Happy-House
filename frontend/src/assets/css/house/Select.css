@@ -1,0 +1,68 @@
+.selectContatiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectors {
+  display: flex;
+  flex-direction: row;
+}
+
+.selectors div {
+  margin: 10px;
+  width: 200px;
+}
+
+.selectors div div {
+  margin: 0;
+}
+
+.searchInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 50px 30px;
+}
+
+input {
+  padding: 7px;
+  width: 600px;
+  border: 0;
+  border-bottom: 2px solid #203eac;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #203eac;
+  background: transparent;
+}
+
+.tableContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.selectedTable {
+  margin-right: 30px;
+  width: 50%;
+  border: 1px solid #eeeeee;
+}
+
+#map {
+  width: 50%;
+  height: 650px;
+  border-radius: 3px;
+}
+
+.chartButtonContainer{
+  display: flex;
+  flex-direction: row;
+}
+.salesButton {
+  margin-right: 30px;
+}
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

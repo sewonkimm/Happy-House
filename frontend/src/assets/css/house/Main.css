@@ -1,0 +1,61 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.backButton {
+  position: absolute;
+  top: 170px;
+  left: 170px;
+  float: left;
+}
+
+.title {
+  font-size: 56px;
+  font-weight: bold;
+  color: #203eac;
+
+  border-right: solid 3px #203eac;
+  white-space: nowrap;
+  overflow: hidden;
+
+  animation: animated-text 1.7s steps(20, end) 1s 1 normal both,
+    animated-cursor 600ms steps(29, end) infinite, hide-border 1s infinite 3.85s;
+}
+
+/* text animation */
+@keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 575px;
+  }
+}
+
+/* cursor animations */
+@keyframes animated-cursor {
+  from {
+    border-right-color: #203eac;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes hide-border {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+.serviceContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

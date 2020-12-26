@@ -1,0 +1,112 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.title {
+  margin-bottom: 60px;
+  font-size: 56px;
+  font-weight: bold;
+  color: #203eac;
+
+  border-right: solid 3px #203eac;
+  white-space: nowrap;
+  overflow: hidden;
+
+  animation: animated-text 0.8s steps(4, end) 1s 1 normal both,
+    animated-cursor 600ms steps(29, end) infinite, hide-border 1s infinite 2.5s;
+}
+
+/* text animation */
+@keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 230px;
+  }
+}
+
+/* cursor animations */
+@keyframes animated-cursor {
+  from {
+    border-right-color: #203eac;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes hide-border {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+.v-app {
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 200px 50px;
+}
+
+.insert {
+  font-size: 18px;
+  font-weight: bold;
+  color: #203eac;
+}
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+input {
+  padding: 7px 0;
+  width: 300px;
+  border: 0;
+  border-bottom: 2px solid #203eac;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #203eac;
+  background: transparent;
+}
+
+.editorButtonContainer button {
+  margin: 0 10px 20px;
+}
+
+.boards {
+  padding: 0 200px;
+}
+
+#fileUploadFlag {
+  margin: 5px;
+  width: 13px;
+}
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#fileImage{
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.uploadImage {
+  width: 320px;
+  height: 160px;
+}

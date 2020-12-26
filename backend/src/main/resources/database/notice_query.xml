@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ssafy.happyhouse.dao.NoticeDao">
+
+	<insert id="noticeInsert" parameterType="com.ssafy.happyhouse.dto.NoticeDto" useGeneratedKeys="true" keyProperty="boardId">
+		INSERT INTO notice ( userSeq, title, content, regDt, readCnt )
+		            VALUES ( #{userSeq}, #{title}, #{content}, now(), 0 )
+	</insert>
+	
+	<insert id="noticeFileInsert" parameterType="com.ssafy.happyhouse.dto.NoticeFileDto">
+		INSERT INTO board_file ( boardId, fileName, fileSize, fileContentType, fileUrl )
+		            VALUES ( #{boardId}, #{fileName}, #{fileSize}, #{fileContentType}, #{fileUrl} )
+	</insert>
+	
+	<!-- reg_dt : LocalDateTime, check out NoticeDto setter  -->
+	<select id="noticeList" parameterType="map" resultType="com.ssafy.happyhouse.dto.NoticeDto">
+		SELECT b.boardId as boardId, b.userSeq as userSeq, u.userName as userName, 
+		       u.userProfileImgUrl as userProfileImgUrl,
+		  	   b.title as title, b.content as content, b.regDt as regDt, b.readCnt as readCnt
+		  FROM notice b, user u
+		 WHERE b.userSeq = u.userSeq
+		 ORDER BY b.boardId DESC
+		 LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	<select id="noticeListTotalCount" resultType="int">
+		SELECT COUNT(*) FROM notice
+	</select>
+	
+	<select id="noticeListSearchWord" parameterType="map" resultType="com.ssafy.happyhouse.dto.NoticeDto">
+		SELECT b.boardId as boardId, b.userSeq as userSeq, u.userName as userName, 
+		       u.userProfileImgUrl as userProfileImgUrl,
+		  	   b.title as title, b.content as content, b.regDt as regDt, b.readCnt as readCnt
+		  FROM notice b, user u
+		  WHERE b.userSeq = u.userSeq
+		    AND b.title LIKE CONCAT('%', #{searchWord} ,'%')
+		  ORDER BY b.boardId DESC
+		  LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	<select id="noticeListSearchWordTotalCount" parameterType="string" resultType="int">
+		SELECT COUNT(*)
+		  FROM notice
+		 WHERE title LIKE CONCAT('%', #{searchWord} ,'%')
+	</select>
+	
+	<update id="noticeUpdate" parameterType="com.ssafy.happyhouse.dto.NoticeDto">
+		UPDATE notice
+		   SET title = #{title},
+		   content   = #{content}
+		 WHERE boardId = #{boardId}
+	</update>
+	
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM notice WHERE boardId = #{boardId}
+	</delete>
+	
+	<delete id="noticeFileDelete" parameterType="int">
+		DELETE FROM board_file WHERE boardId = #{boardId}
+	</delete>
+	
+	<select id="noticeFileUrlDeleteList" parameterType="int" resultType="string">
+		SELECT fileUrl as fileUrl FROM board_file WHERE boardId = #{boardId}
+	</select>
+
+	<select id="noticeDetail" parameterType="int" resultType="com.ssafy.happyhouse.dto.NoticeDto">
+		SELECT b.boardId as boardId, b.userSeq as userSeq, u.userName as userName, u.userProfileImgUrl as userProfileImgUrl,
+			   b.title as title, b.content as content, b.regDt as regDt, b.readCnt as readCnt
+		  FROM notice b, user u
+		 WHERE b.boardId = #{boardId}
+		   AND b.userSeq = u.userSeq
+	</select>
+	
+	<select id="noticeDetailFileList" parameterType="int" resultType="com.ssafy.happyhouse.dto.NoticeFileDto">
+		SELECT boardId as boardId, fileId as fileId, fileName as fileName, fileSize as fileSize, fileContentType as fileContentType, 
+		       fileUrl as fileUrl, regDt as regDt
+		  FROM board_file
+		 WHERE boardId = #{boardId}
+	</select>
+
+</mapper>
+
+
+
+
+
+

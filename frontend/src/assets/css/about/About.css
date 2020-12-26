@@ -1,0 +1,33 @@
+.about {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  padding: 0 140px;
+  width: 100%;
+}
+
+.aboutImage {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+}
+
+.aboutContent {
+  padding: 30px 60px;
+  font-size: 16px;
+  color: #203eac;
+  text-align: left;
+}
+
+.aboutContent h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.aboutContent p {
+  font-size: 14px;
+  line-height: 1.45;
+}

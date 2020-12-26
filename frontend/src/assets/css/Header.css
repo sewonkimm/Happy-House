@@ -1,0 +1,53 @@
+.header {
+  display: grid;
+  grid-template-columns: 6fr 4fr 2fr;
+  justify-items: start;
+  align-items: center;
+  padding: 20px 40px;
+  height: 106px;
+  background-color: #fedccc;
+  color: #203eac;
+}
+
+.logo {
+  height: 70px;
+  cursor: pointer;
+}
+
+.nav {
+  justify-self: end;
+}
+
+a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #203eac;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-self: end;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+}
+
+.userName {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.noprofile {
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
